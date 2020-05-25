@@ -1,10 +1,12 @@
 import multer from "multer";
+import path from "path";
 
-const destDir = "/directions/";
-const fileName = "direction.png";
+const destDir = "directions";
+const fileName = "direction.jpg";
+const dest = path.join(__dirname, `../${destDir}/`);
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, destDir),
+  destination: (req, file, cb) => cb(null, dest),
   filename: (req, file, cb) => cb(null, fileName)
 });
 
