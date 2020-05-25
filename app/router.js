@@ -6,13 +6,11 @@ const router = express.Router();
 
 router.post("/", upload.single("file"), (req, res) => {
   if (!req.file) {
-    return res.status(500);
+    return res.status(400);
   }
 
-  // run python script once image is uploaded
-  pySpawn();
-
-  res.json({ ok: true });
+  // run movement processes once image is uploaded
+  pySpawn(res);
 });
 
 export default router;
