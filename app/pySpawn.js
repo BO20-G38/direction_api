@@ -9,13 +9,13 @@ const options = {
 };
 
 const commands = {
-  camera: `python ${scriptDir}/camera.py`,
+  predict: `python ${scriptDir}/predict.py`,
   init: `python ${scriptDir}/init.py`
 };
 
-// Recieves predicted direction from camera.py and run movement script
-const cameraPy = res => {
-  const child = exec(commands.camera);
+// Recieves predicted direction from predict.py and run movement script
+const predictPy = res => {
+  const child = exec(commands.predict);
   child.stdout.on("data", direction => movePy(direction, res));
 };
 
@@ -27,4 +27,4 @@ const movePy = (direction, res) => {
 
 const exec = cmd => shell.exec(cmd, options);
 
-export default cameraPy;
+export default predictPy;
