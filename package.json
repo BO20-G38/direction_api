@@ -6,14 +6,17 @@
     "@babel/preset-env": "^7.9.6",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "multer": "^1.4.2"
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.4",
+    "shelljs": "^0.8.4",
+    "socket.io": "^2.3.0"
   },
   "name": "move_api",
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {},
   "scripts": {
-    "start": "babel-node -- index.js",
+    "start": "nodemon --exec babel-node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sander Hellesø"
