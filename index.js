@@ -1,11 +1,17 @@
 import express from "express";
 import router from "./app/router";
-import socketServer from "./app/socket";
+import { createUploadDirIfNotPresent } from "./app/upload";
+import socketServer, { handleSocketConnection } from "./app/socket";
 
-const SERVER_PORT = 3000;
+createUploadDirIfNotPresent();
 
 const app = express();
-const server = socketServer(app);
+const { server, io } = socketServer(app);
+
+handleSocketConnection(io);
 app.use(router);
 
-server.listen(3000, () => console.log(`API running on port ${SERVER_PORT}`));
+const SERVER_PORT = 3000;
+server.listen(SERVER_PORT, () =>
+  console.log(`API running on port ${SERVER_PORT}`)
+);
